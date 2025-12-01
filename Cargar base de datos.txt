@@ -1,0 +1,47 @@
+http://localhost:8081/h2-console
+
+
+-- 1. Crear un Cliente (HU-01)
+INSERT INTO CLIENTE (cuit, razon_social, condicion_fiscal) 
+VALUES ('20-12345678-9', 'Cliente de Prueba SA', 'RESPONSABLE_INSCRIPTO');
+
+-- 2. Crear Servicios en el Catálogo (HU-03)
+INSERT INTO SERVICIO (nombre, precio_unitario) 
+VALUES ('Hosting Básico', 1500.00);
+INSERT INTO SERVICIO (nombre, precio_unitario) 
+VALUES ('Soporte Premium', 2500.00);
+
+-- 3. Crear una Cuenta para el Cliente (HU-02) - (Será la ID 1)
+INSERT INTO CUENTA (alias, email_facturacion, estado, cuit_cliente) 
+VALUES ('Sitio Web Principal', 'facturas@cliente-prueba.com', 'ACTIVA', '20-12345678-9');
+
+-- 4. Asociar los servicios a la cuenta (HU-04)
+INSERT INTO CUENTA_X_SERVICIO (id_cuenta, id_servicio) 
+VALUES (1, 1); -- Asocia Cuenta 1 con Servicio 1
+INSERT INTO CUENTA_X_SERVICIO (id_cuenta, id_servicio) 
+VALUES (1, 2); -- Asocia Cuenta 1 con Servicio 2
+
+
+
+http://localhost:8081/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+netstat -aon | findstr "8081"
+
+
+taskkill /PID <PID> /F
